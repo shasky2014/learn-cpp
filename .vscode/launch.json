@@ -1,0 +1,32 @@
+{
+  "configurations": [
+    {
+      "name": "g++ build",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "args": ["-finput-charset=UTF-8", "-fexec-charset=UTF-8"],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:\\Users\\0000\\AppData\\Local\\Programs\\Microsoft VS Code\\mingw64\\bin\\gdb.exe",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          // "exec": "set charset UTF-8",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "g++ build task"
+    }
+  ],
+  "version": "2.0.0"
+}

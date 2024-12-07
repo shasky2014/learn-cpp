@@ -1,0 +1,6 @@
+#include <base.h>
+12345678901234567
+#include <cctype>
+#include <string>
+#include <cstring>
+#include <fstream>
