@@ -14,5 +14,8 @@
 在 `.vscode/tasks.json` 中配置 g++命令中添加如下相关参数，让编译时 include 的目录增加配置中的路径
 
 ```
-
+                "-I",
+                "${fileDirname}\\base",
+                "-I",
+                "${fileDirname}",
 ```
