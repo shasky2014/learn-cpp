@@ -19,3 +19,10 @@
                 "-I",
                 "${fileDirname}",
 ```
+
+C:/Users/0000/AppData/Local/Programs/Microsoft VS Code/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++
+C:/Users/0000/AppData/Local/Programs/Microsoft VS Code/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/x86_64-w64-mingw32
+C:/Users/0000/AppData/Local/Programs/Microsoft VS Code/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++/backward
+C:/Users/0000/AppData/Local/Programs/Microsoft VS Code/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include
+C:/Users/0000/AppData/Local/Programs/Microsoft VS Code/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include-fixed
+C:/Users/0000/AppData/Local/Programs/Microsoft VS Code/mingw64/x86_64-w64-mingw32/include

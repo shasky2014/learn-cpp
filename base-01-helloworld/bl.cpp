@@ -29,6 +29,7 @@ int f2(int n)
 
 int main()
 {
+    std::cout << "__cplusplus:" << __cplusplus << std::endl;
     std::cout << "f1: " << f1(-42) << std::endl;
     std::cout << "f2: " << f2(-42) << std::endl;
     // std::cout << "f3: " << f3(-42) << std::endl;

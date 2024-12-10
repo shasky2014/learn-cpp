@@ -14,8 +14,11 @@
         "${workspaceFolder}",
         "-I",
         "${workspaceFolder}\\base",
+        // "-fmodules-ts",
+        "-std=c++23",
         "-g",
         "${file}",
+        "-v",
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe",
         "-leasyx"
