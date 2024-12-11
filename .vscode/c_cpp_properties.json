@@ -1,7 +1,7 @@
 {
   "configurations": [
     {
-      "name": "Win32",
+      "name": "gcc-x64",
       "includePath": [
         "${workspaceFolder}/**",
         "C:/Users/0000/AppData/Local/Programs/Microsoft VS Code/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/c++",
