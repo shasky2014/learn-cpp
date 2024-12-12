@@ -14,8 +14,8 @@
       ],
       "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
       "windowsSdkVersion": "10.0.26100.0",
-      "compilerPath": "C:/Users/0000/AppData/Local/Programs/Microsoft VS Code/mingw64/bin/gcc.exe",
-      "cStandard": "c17",
+      "compilerPath": "C:/Users/0000/AppData/Local/Programs/Microsoft VS Code/mingw64/bin/g++.exe",
+      "cStandard": "c23",
       "cppStandard": "c++23",
       "intelliSenseMode": "gcc-x64"
     }

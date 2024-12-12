@@ -22,8 +22,8 @@ T max5(T arr[SIZE])
 }
 int main(int argc, char const *argv[])
 {
-    int l5[] = {1, 12, 5, 7, 0};
-    double d5[] = {1.0, -12, 5.0, 0.7, -2.0};
+    int l5[] = {1, 13, 5, 7, 0};
+    double d5[] = {1.0, -12, 5.3, 0.7, -2.0};
     int max_l = max5(l5);
     double max_d = max5(d5);
     cout << "max_l: " << max_l << endl;
