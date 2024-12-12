@@ -1,6 +1,5 @@
 #include <iostream>
 #include <base.h>
-#include <tt.h>
 
 using namespace std;
 int main()

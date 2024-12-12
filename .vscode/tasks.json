@@ -3,7 +3,7 @@
     {
       "type": "cppbuild",
       "label": "g++ build task",
-      "command": "C:\\Users\\0000\\AppData\\Local\\Programs\\Microsoft VS Code\\mingw64\\bin\\g++.exe",
+      "command": "C:\\mingw64\\bin\\g++.exe",
       "args": [
         "-finput-charset=UTF-8",
         "-fexec-charset=UTF-8",

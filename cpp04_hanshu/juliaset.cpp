@@ -12,6 +12,11 @@
 4.重复2、3步骤 k 次；\\
 5.画出矩阵 J，即Julia集的图像。\\
 */
+const float RATIO = 0.75;
+const int WINDOWS_WIDTH = 1200;
+const int WINDOWS_HEIGHT = WINDOWS_WIDTH * RATIO;
+const float COMPLEX_RE_RANGE = 1.6;                      // (-1.6, +1.6)
+const float COMPLEX_IM_RANGE = COMPLEX_RE_RANGE * RATIO; // (-1.2i, +1.2i)
 
 template <typename T>
 string toString(const T in_num, const int pre = 3)
@@ -20,17 +25,11 @@ string toString(const T in_num, const int pre = 3)
     out_str << std::setprecision(pre) << std::setiosflags(ios::fixed) << in_num;
     return out_str.str();
 }
-
-// 窗口大小
-#define WINDOWS_WIDTH 640
-#define WINDOWS_HEIGHT 480
-// 定义复数
 struct COMPLEX
 {
-    double re;
-    double im;
+    float re;
+    float im;
 };
-// 定义复数“乘”运算
 COMPLEX operator*(COMPLEX a, COMPLEX b)
 {
     COMPLEX c;
@@ -38,7 +37,6 @@ COMPLEX operator*(COMPLEX a, COMPLEX b)
     c.im = a.im * b.re + a.re * b.im;
     return c;
 }
-// 定义复数“加”运算
 COMPLEX operator+(COMPLEX a, COMPLEX b)
 {
     COMPLEX c;
@@ -46,6 +44,14 @@ COMPLEX operator+(COMPLEX a, COMPLEX b)
     c.im = a.im + b.im;
     return c;
 }
+
+void draw_complex(COMPLEX c, COMPLEX z, int i, int j)
+{
+    if (WINDOWS_WIDTH * ((z.re - c.re) * (z.re - c.re) + (z.im - c.im) * (z.im - c.im)) < 0.2)
+        putpixel(i, j, HSLtoRGB(1, 1, 1));
+    return;
+}
+
 int main()
 {
     COMPLEX cl[] = {{-0.75, 0},
@@ -53,6 +59,9 @@ int main()
                     {0.285, 0.01},
                     {-0.8, 0.156},
                     {-0.835, -0.2321},
+                    {-1.2, 0},
+                    {-1.5, -0.2321},
+                    {-0.5, 1},
                     {-0.70176, -0.2321}};
 
     // 设置窗口大小
@@ -60,9 +69,7 @@ int main()
     settextstyle(20, 0, _T("等线"));
     ExMessage msg;
     // 绘制Julia Set
-    COMPLEX z, c;
-    // 设置迭代初值
-    // c.re = 0.285, c.im = -0.835;
+    COMPLEX zb, z, c;
     for (COMPLEX c : cl)
     {
         int i, j, k;
@@ -70,8 +77,8 @@ int main()
         {
             for (j = 0; j < WINDOWS_HEIGHT; j++)
             {
-                z.re = -1.6 + 3.2 * (i / (float)WINDOWS_WIDTH);
-                z.im = -1.2 + 2.4 * (j / (float)WINDOWS_HEIGHT);
+                zb.re = z.re = -COMPLEX_RE_RANGE + (COMPLEX_RE_RANGE * 2) * (i / (float)WINDOWS_WIDTH);
+                zb.im = z.im = COMPLEX_IM_RANGE - (COMPLEX_IM_RANGE * 2) * (j / (float)WINDOWS_HEIGHT);
                 for (k = 0; k < 180; k++)
                 {
                     z = z * z + c;
@@ -81,11 +88,15 @@ int main()
                     }
                 }
                 putpixel(i, j, (k >= 180) ? 0 : HSLtoRGB((float)((k << 5) % 360), 1.0, 0.5));
+                draw_complex(c, zb, i, j);
             }
         }
-        string src = "C=" + toString(c.re) + ((c.im >= 0) ? " +" : " ") + toString(c.im) + " i  ";
+        string src = ((c.re >= 0) ? "C= " : "C=") +
+                     toString(c.re) +
+                     ((c.im >= 0) ? " +" : " ") +
+                     toString(c.im) + " i  ";
         cout << src << endl;
-        outtextxy(90, 30, src.c_str());
+        outtextxy(90, 30, _T(src.data()));
         outtextxy(90, 55, _T("按任意键继续..."));
         getmessage(&msg, EX_KEY);
         // cout << msg.prevdown << endl;
