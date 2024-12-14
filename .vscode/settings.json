@@ -83,6 +83,15 @@
     "xtr1common": "cpp",
     "xtree": "cpp",
     "xutility": "cpp",
-    "complex": "cpp"
+    "complex": "cpp",
+    "condition_variable": "cpp",
+    "set": "cpp",
+    "unordered_set": "cpp",
+    "hash_map": "cpp",
+    "future": "cpp",
+    "mutex": "cpp",
+    "semaphore": "cpp",
+    "cinttypes": "cpp",
+    "valarray": "cpp"
   }
 }
