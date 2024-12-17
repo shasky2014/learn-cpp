@@ -92,6 +92,7 @@
     "mutex": "cpp",
     "semaphore": "cpp",
     "cinttypes": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "alignedvector3": "cpp"
   }
 }
