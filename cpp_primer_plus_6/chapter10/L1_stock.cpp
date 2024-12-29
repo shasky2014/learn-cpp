@@ -1,5 +1,6 @@
 #include <iostream>
-#include "L10_1_stock.h"
+#include <print>
+#include "L1_stock.h"
 
 void Stock::acquire(const std::string &co, long n, double pr)
 {
@@ -54,8 +55,6 @@ void Stock::update(double price)
 }
 void Stock::show()
 {
-    std::cout << "Company: " << company
-              << " Shares: " << shares << "\n"
-              << "    Share Price: $" << share_val
-              << " Total Value: $" << total_val << "\n";
+    printf("Company: %s \tShares:%d\n", company.c_str(), shares);
+    printf("\tShare Price: $%.3lf\tTotal Value: $%.3lf\n", share_val, total_val);
 }
