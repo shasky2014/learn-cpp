@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "*.ndjson": "jsonl",
     "*.dbclient-js": "javascript",
     "iostream": "cpp",
     "random": "cpp",
@@ -93,6 +94,8 @@
     "semaphore": "cpp",
     "cinttypes": "cpp",
     "valarray": "cpp",
-    "alignedvector3": "cpp"
+    "alignedvector3": "cpp",
+    "mprealsupport": "cpp",
+    "core": "cpp"
   }
 }

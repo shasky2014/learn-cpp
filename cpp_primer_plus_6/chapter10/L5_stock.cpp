@@ -68,7 +68,12 @@ void Stock::update(double price)
 }
 void Stock::show() const
 {
-    printf("Stock:{\n\tCompany name= %s,\t&=%p\n\tShares number= %d,\t&=%p\n\tShare Price= $%.3lf,\t&=%p\n\tTotal Value= $%.3lf,\t&=%p\n}\n", company.c_str(), &company, shares, &shares, share_val, &share_val, total_val, &total_val);
+    printf("Stock:{\n"
+           "\tCompany name= %s,\t&=%p\n"
+           "\tShares number= %d,\t&=%p\n"
+           "\tShare Price= $%.3lf,\t&=%p\n"
+           "\tTotal Value= $%.3lf,\t&=%p\n}\n",
+           company.c_str(), &company, shares, &shares, share_val, &share_val, total_val, &total_val);
 }
 const Stock &Stock::topval(const Stock &s) const
 {
