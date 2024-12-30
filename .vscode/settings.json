@@ -96,6 +96,7 @@
     "valarray": "cpp",
     "alignedvector3": "cpp",
     "mprealsupport": "cpp",
-    "core": "cpp"
+    "core": "cpp",
+    "bvh": "cpp"
   }
 }

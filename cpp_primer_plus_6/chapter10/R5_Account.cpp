@@ -48,7 +48,7 @@ void B_Account::rename(string name)
 {
     name_ = name;
 }
-
+// UniqueIDGenerator
 int UniqueIDGenerator::counter = 0;
 string UniqueIDGenerator::generate()
 {

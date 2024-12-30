@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
 
     B_Account bank_acounts[3];
     string new_name;
-    double new_balance;
+    double deposit;
     double new_withdraw;
     for (int i = 0; i < 3; i++)
     {
@@ -24,9 +24,9 @@ int main(int argc, char const *argv[])
         getline(cin, new_name);
         bank_acounts[i].rename(new_name);
         cout << "Please depositing: ";
-        cin >> new_balance;
+        cin >> deposit;
         cin.get();
-        bank_acounts[i].depositing(new_balance);
+        bank_acounts[i].depositing(deposit);
     }
     for (int i = 0; i < 3; i++)
     {
