@@ -82,4 +82,14 @@ namespace vector
     {
         return Vector(v.x() * a, v.y() * a);
     }
+    std::ostream &operator<<(std::ostream &os, const Vector &v)
+    {
+        if (v.mode_ == Vector::RECT)
+            os << "Vector(x=" << v.x() << ",y=" << v.y() << ")";
+        else if (v.mode_ == Vector::POL)
+            os << "Vector(d=" << v.d() << ",a=" << v.a() << "°)";
+        else
+            os << "Vector object mode is invalid";
+        return os;
+    }
 }

@@ -36,6 +36,7 @@ int main(int argc, char const *argv[])
         {
             direction = rand() % 360;
             step.reset(dstep, direction, Vector::POL);
+            step.RECT_mode();
             result = result + step;
             fout << steps_count << ":walk " << step << " to " << result << endl;
             steps_count += 1;
@@ -45,7 +46,9 @@ int main(int argc, char const *argv[])
         cout << "Average outward distance per step is " << result.d() / steps_count << endl;
 
         fout << "cost " << steps_count << " steps to the target" << endl
-             << result << endl
+             << result;
+        result.POL_mode();
+        fout << " or " << result << endl
              << "Average outward distance per step is " << result.d() / steps_count << endl;
         fout.close();
 

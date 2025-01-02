@@ -35,16 +35,7 @@ namespace vector
         Vector operator*(double) const;
         Vector operator-() const;
         friend Vector operator*(double, const Vector &);
-        friend std::ostream &operator<<(std::ostream &os, const Vector &v)
-        {
-            if (v.mode_ == RECT)
-                os << "Vector(" << v.x() << "," << v.y() << ")by RECT";
-            else if (v.mode_ == POL)
-                os << "Vector(" << v.d() << "," << v.a() << "°)by POL";
-            else
-                os << "Vector object mode is invalid";
-            return os;
-        }
+        friend std::ostream &operator<<(std::ostream &os, const Vector &v);
     };
 }
 #endif
