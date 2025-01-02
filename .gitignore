@@ -31,3 +31,6 @@
 *.out
 *.app
 *.pdf
+*.txt
+*.xlsx
+*.xls
