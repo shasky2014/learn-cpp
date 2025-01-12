@@ -10,10 +10,12 @@ private:
 
 public:
     StringBad(const char *s);
+    StringBad(const StringBad &s);
     StringBad();
     ~StringBad();
     int length() const;
     int size() const;
+    StringBad &operator=(const StringBad &a);
     friend StringBad operator+(const StringBad &a, const StringBad &b);
     friend std::ostream &operator<<(std::ostream &os, const StringBad &st);
     friend std::istream &operator>>(std::istream &ist, StringBad &st);

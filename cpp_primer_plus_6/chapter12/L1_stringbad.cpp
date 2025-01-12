@@ -15,7 +15,13 @@ StringBad::StringBad()
     strcpy(str, "c++");
     num_strings++;
 }
-
+StringBad::StringBad(const StringBad &s)
+{
+    len = s.len;
+    str = new char[len + 1];
+    strcpy(str, s.str);
+    num_strings++;
+}
 StringBad::StringBad(const char *s)
 {
     len = strlen(s);
@@ -25,13 +31,23 @@ StringBad::StringBad(const char *s)
 }
 StringBad::~StringBad()
 {
+    cout << "\"" << str << "\"[" << this << "] is deleted, ";
     delete[] str;
     num_strings--;
     cout << num_strings << " left\n";
 }
 int StringBad::length() const { return len; }
 int StringBad::size() const { return len; }
-
+StringBad &StringBad::operator=(const StringBad &a)
+{
+    if (this == &a)
+        return *this;
+    delete[] str;
+    len = a.len;
+    str = new char[len + 1];
+    strcpy(str, a.str);
+    return *this;
+}
 StringBad operator+(const StringBad &a, const StringBad &b)
 {
     StringBad c = StringBad();
