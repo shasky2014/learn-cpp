@@ -16,7 +16,6 @@
         "${workspaceFolder}\\base",
         "-std=c++23",
         "-g",
-        "${fileDirname}\\${fileBasenameNoExtension}*.h",
         "${fileDirname}\\${fileBasenameNoExtension}*.cpp",
         // "${file}",
         "-o",

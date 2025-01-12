@@ -38,3 +38,18 @@ A: 主要有下面 4 种
 Q: c++中，class A( string a, int b);初始化时 a 的值非常大，程序会如何处理这个初始化时的内存空间占用问题？
 
 A:
+
+Q: 怎么用 vscode 调试多文件的 c++程序
+
+A: 参考[关于使用 VScode 进行 C/C++项目里多文件的调试](https://www.cnblogs.com/xiaml/articles/17425759.html)
+h 文件可以不包含在-g 的文件列表中，但是 h 文件中包含的函数需要包含在-g 的文件列表中。
+
+Q: cin.get(), cin.get(char _,int), cin.getline(char _,int), getline(cin, string)区别
+
+A: 可参考[【C/C++基础】C++中 cin、cin.get()、cin.getline()、getline() 的区别](https://blog.csdn.net/weixin_54383080/article/details/133936141)
+
+1.  cin.get()：从输入流中读取一个字符，并将其存储在变量中，但不包括换行符。
+2.  cin.get(char \*,int)：从输入流中读取指定数量的字符，并将其存储在数组中。输入换行，结束当前输入，换行复会留在缓存区，此时 cin 有值，需要 cin.get()或 cin.getline()读取，才能进行下一步的输入。
+3.  cin.getline(char \*,int)：从输入流中读取指定数量的字符，并将其存储在数组中。输入换行，结束当前输入，换行不会留在缓存区，此时 cin 无值。可以直接进行下一步的输入。
+4.  getline(cin, string)：从输入流中读取一行文本，并将其存储在字符串中。输入换行，结束当前输入，换行不会留在缓存区，此时 cin 无值。可以直接进行下一步的输入。
+5.  !cin
