@@ -6,8 +6,7 @@ namespace mystring
     class String
     {
     private:
-                static int num_strings;
-
+        static int num_strings;
         char *str;
         int len;
 
