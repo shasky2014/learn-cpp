@@ -34,3 +34,9 @@
 *.txt
 *.xlsx
 *.xls
+
+# libs
+symengine*
+gmp*
+mpc*
+mpfr*
