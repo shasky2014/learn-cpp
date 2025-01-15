@@ -17,6 +17,19 @@
 
 ## Q&A
 
+Q: vscode 编译时, 目标代码有 include 自己写的 h 文件，报错找不到这个 h 文件
+
+A: 在 `.vscode/tasks.json` 中配置 g++命令中添加如下相关参数，让编译时 include 的目录增加配置中的路径
+
+```
+...
+   "-I",
+   "${fileDirname}\\base",
+   "-I",
+   "${fileDirname}",
+...
+```
+
 Q: 如何在 vscode 使用 c++23 开发编译程序？
 
 A: 想使用 c++23 的特性，需要使用 g++ 14.2.0 以上版本，并且需要使用 g++ 的最新版本，在 vscode 中，需要配置好 c_cpp_properties.json 文件，在 tasks.json 中配置好编译命令，在 launch.json 中配置好调试命令，在 settings.json 中配置好 c++ 标准版本。
