@@ -43,6 +43,7 @@ namespace bank
         ~Queue();
         bool add(const Item &);
         bool drop(Item &);
+        void clean();
         bool isempty() const { return count_ == 0; }
         bool isfull() const { return count_ == qsize_; }
         int count() const { return count_; }

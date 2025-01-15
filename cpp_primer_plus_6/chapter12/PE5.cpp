@@ -12,82 +12,86 @@ using namespace bank;
 const int MIN_PER_HOUR = 60;
 bool newcustomer(double x)
 {
-    // 根据x生成随机数判断是否有新客户进来
-    return (rand() * x / RAND_MAX < 1);
+    // x是预计每个人需要的时间，根据x生成随机数判断是否有新客户进来
+    // 目的每小时随机生成 x 个 newcustomer
+    return (x * rand() / RAND_MAX < 1);
 }
 
 int main(int argc, char const *argv[])
 {
+
     srand(time(0));
-    int qs;
-    cout << "Enter the number of queues: ";
-    cin >> qs;
+    Item temp;
+    int qs = 10;
     Queue line(qs);
 
-    int hours = 5;
+    int hours = 150;
     long cyclelimit = MIN_PER_HOUR * hours;
 
-    double perhour;
-    cout << "Enter the average number of customers per hour: ";
-    cin >> perhour;
-    double min_per_cust = MIN_PER_HOUR / perhour;
-
-    Item temp;
-    long turnaways = 0;
-    long customers = 0;
-    long served = 0;
-    double sum_line = 0;
-    int wait_time = 0;
-    double line_wait = 0;
-
-    for (int cycle = 0; cycle < cyclelimit; cycle++)
+    for (int i = 10; i <= 30; i++)
     {
-        // cout << cycle << ":line size " << line.count() << "\t\t";
+        line.clean();
+        double perhour = i;
+        double min_per_cust = MIN_PER_HOUR / perhour;
 
-        if (newcustomer(min_per_cust))
+        long turnaways = 0;
+        long customers = 0;
+        long served = 0;
+        double sum_line = 0;
+        int wait_time = 0;
+        double line_wait = 0;
+
+        for (int cycle = 0; cycle < cyclelimit; cycle++)
         {
-            if (line.isfull())
+            // cout << cycle << ":line size " << line.count() << "\t\t";
+            if (newcustomer(min_per_cust))
             {
-                turnaways++;
-                // cout << "turnaway a customer on " << cycle << "\t\t";
+                if (line.isfull())
+                {
+                    turnaways++;
+                    // cout << "turnaway a customer on " << cycle << "\t\t";
+                }
+                else
+                {
+                    customers++;
+                    temp.set(cycle);
+                    line.add(temp);
+                    // cout << "add a customer: " << temp.ptime() << ", on " << temp.when() << "\t\t";
+                }
             }
-            else
+            if (wait_time <= 0 && !line.isempty())
             {
-                customers++;
-                temp.set(cycle);
-                line.add(temp);
-                // cout << "add a customer: " << temp.ptime() << ", on " << temp.when() << "\t\t";
+                line.drop(temp);
+                wait_time = temp.ptime();
+                line_wait += cycle - temp.when();
+                served++;
+                // cout << "go a customer: " << temp.ptime() << ", on " << temp.when() << "\t\t";
             }
+            if (wait_time > 0)
+                wait_time--;
+            sum_line += line.count();
+
+            // cout << endl;
         }
-        if (wait_time <= 0 && !line.isempty())
+
+        if (customers > 0)
         {
-            line.drop(temp);
-            wait_time = temp.ptime();
-            line_wait += cycle - temp.when();
-            served++;
-            // cout << "go a customer: " << temp.ptime() << ", on " << temp.when() << "\t\t";
+            cout << line << ",perhour:" << perhour << endl;
+            cout << "customers accepted: " << customers << endl;
+            cout << "customers served: " << served << endl;
+            cout << "turnaways: " << turnaways << endl;
+
+            cout.precision(2);
+            cout.setf(std::ios_base::fixed, std::ios_base::floatfield);
+            cout << "average queue size: " << (double)sum_line / cyclelimit << endl;
+            cout << "average wait time: " << line_wait / served << " minutes per customer" << endl;
         }
-        if (wait_time > 0)
-            wait_time--;
-        sum_line += line.count();
+        else
+            cout << "No customers!\n";
 
-        // cout << endl;
+        if (line_wait / served > 1)
+            break;
     }
-
-    if (customers > 0)
-    {
-        cout << line << endl;
-        cout << "customers accepted: " << customers << endl;
-        cout << "customers served: " << served << endl;
-        cout << "turnaways: " << turnaways << endl;
-
-        cout.precision(2);
-        cout.setf(std::ios_base::fixed, std::ios_base::floatfield);
-        cout << "average queue size: " << (double)sum_line / cyclelimit << endl;
-        cout << "average wait time: " << line_wait / served << " minutes per customer" << endl;
-    }
-    else
-        cout << "No customers!\n";
     cout << "Done!\n";
     return 0;
 }

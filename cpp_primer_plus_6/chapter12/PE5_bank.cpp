@@ -49,6 +49,14 @@ namespace bank
             tail_ = nullptr;
         return true;
     }
+    void Queue::clean()
+    {
+        while (!isempty())
+        {
+            Item temp;
+            drop(temp);
+        }
+    }
     std::ostream &operator<<(std::ostream &os, const Queue &q)
     {
         os << "Queue[" << &q << "]{qsize=" << q.qsize_ << ",count=" << q.count_ << "}";
