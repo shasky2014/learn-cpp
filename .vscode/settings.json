@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "*.sqlbook": "sql",
     "*.ndjson": "jsonl",
     "*.dbclient-js": "javascript",
     "iostream": "cpp",
@@ -97,6 +98,12 @@
     "alignedvector3": "cpp",
     "mprealsupport": "cpp",
     "core": "cpp",
-    "bvh": "cpp"
+    "bvh": "cpp",
+    "strstream": "cpp",
+    "regex": "cpp",
+    "csignal": "cpp",
+    "stdfloat": "cpp",
+    "cfenv": "cpp",
+    "typeindex": "cpp"
   }
 }
